@@ -1,0 +1,31 @@
+<canvas width="600" height="400"></canvas>
+
+<script>
+
+function desenhoQuadrado(x, y, cor){
+    var tela = document.querySelector("canvas");
+    var pincel = tela.getContext("2d");
+
+    pincel.fillStyle = cor;
+    pincel.fillRect(x, y, 50, 50);
+  // borda
+    pincel.fillStroke = "black";
+    pincel.strokeRect(x, y, 50, 50);
+}
+// looping
+/*
+var x = 0;
+
+while(x < 600) {
+    desenhoQuadrado(x, 0, "blue");
+    desenhoQuadrado(x, 50, "pink");
+    x = x + 50; // ele vai fazer o looping ate chegar no limite definido no while
+}*/
+
+// usando for, voce consegue declarar ja tudo no for
+
+for (var x = 0; x < 600; x = x + 50){
+    desenhoQuadrado(x, 0, "blue");
+    desenhoQuadrado(x, 50, "pink");
+}
+</script>

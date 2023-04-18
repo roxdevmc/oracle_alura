@@ -1,0 +1,154 @@
+<meta charset="UTF-8">
+<!-- Calculo IMC
+<script>
+
+    function calcularIMC(altura, peso){
+        return peso / (altura * altura);
+    }
+
+    var nome = prompt("Digite seu nome");
+    var altura = prompt( nome + " digite sua altura");
+    var peso = prompt(nome + " digite seu peso");
+
+    var imc = calcularIMC(altura, peso);
+
+    document.write(nome + ", o seu IMC calculado é " + imc);
+
+</script>
+
+--> 
+<!-- 1º modo do jogo de advinhação
+<input/>
+<button>Compare com o meu segredo</button>
+
+<script>
+//variavel gera um numero aleatorio
+var segredo = Math.round(Math.random() * 10);
+
+//pega o input do html e traz pro JS dando foco
+var input = document.querySelector("input");
+input.focus();
+
+// função para verificar o valor do input com o segredo
+function verificar(){
+    if(input.value == segredo){
+         alert("Você ACERTOU!");
+
+    } else {
+         alert("Você ERROU!");
+    }
+
+// limpa o campo e vai dar foco no campo novamente
+    input.value = "";
+    input.focus();
+}
+
+//pega o botao do html e associa ao ato de clicar no botao a função no JS
+var button = document.querySelector("button");
+button.onclick = verificar;
+
+</script>
+-->
+<!--2º modo do jogo de advinhação -->
+<input/>
+<button>Compare com o meu segredo</button>
+
+<script>
+
+// funcao vai sortear random os numero ate 10
+function sorteio(){
+  return  Math.round(Math.random() * 10)
+}
+
+// variavel vai guardar uma lista de valores, array , declara a lista entre []
+// no array vc declara a posição do elemento q vc quer acessar, começa no 0 e não no 1
+// lista segredos fixa var segredos = [5,7,10,2];
+
+/////////////////////////////////////////////////////////////////////
+
+// funcao vai sortear os 5 numero declarados la embaixo
+// segredos comeca lista vazia
+// numero é uma variavel q comeca em 1
+// while vai rodar 5x
+
+function sorteioNumeros(quantidade){
+    var segredos = [];
+    var numero = 1;
+   // looping
+    while(numero <= quantidade){
+
+        // vai sortear o numero aleatorio
+        var numeroSorteado = sorteio();
+        
+       // para nao gerar o 0 como segredo e nem duplicado
+        if(numeroSorteado !== 0){
+             // nao encontrou o numero ainda pq nao verificou na lista de segredos
+            var achou = false;
+
+
+            // vai verificar a lista de segredos para ver se o numero ja esta la
+            for(var posicao = 0; posicao < segredos.length; posicao++){
+            if (segredos[posicao] == numeroSorteado){
+           
+                // se tiver ele recebe true e para e passa pro if
+            achou = true;
+            break;
+         }   
+    }
+}
+//verificar se o numero sorteado esta na lista, se n tiver na lista ele ativa o segredos.push e manda pra lista
+if(achou == false){
+    segredos.push(numeroSorteado);
+  // vai gerar outro numero
+    numero++;
+        }
+        }
+        
+    return segredos;
+}
+
+// variavel = funcao para sortear 5 numero
+var segredos = sorteioNumeros(5);
+
+// mostra somente pro desenvolvedor 
+console.log(segredos);
+
+//pega o input do html e traz pro JS dando foco
+var input = document.querySelector("input");
+input.focus();
+
+// função para verificar o valor do input com o segredo
+function verificar(){
+
+    var achou = false;
+
+    // for é uma estrutura de looping, vc usa quando quer verificar varios dados dentro da lista for(variavel ; condição ; oq vai acontecer com a variavel)
+    //para verificar a posicao dos 4 elementos declarado
+    // segredos.lenght para nao ter q mudar toda vez que acrescentar na lista um numero novo, vc declara assim para verificar o tamanho, ele retorna a quantidade de elementos que ele tem
+    for(var posicao = 0; posicao < segredos.length; posicao++){
+
+        // segredos[posicao]  é para comparar a lista declarada, ele verifica na posição
+    if(input.value == segredos[posicao]){
+         alert("Você ACERTOU!");
+         achou = true;
+         break;
+         // ele para de verificar apos vc acertar o numero
+
+        } 
+    }
+    //vai verificar o codigo todo, se vc errou ele vai exibir o alerte 
+    if (achou == false){
+        alert("Você ERROU!")
+    }
+// limpa o campo e vai dar foco no campo novamente
+    input.value = "";
+    input.focus();
+}
+
+//pega o botao do html e associa ao ato de clicar no botao a função no JS
+var button = document.querySelector("button");
+button.onclick = verificar;
+
+</script>
+
+

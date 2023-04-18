@@ -1,0 +1,37 @@
+
+<canvas width="600" height="400"></canvas>
+
+<script>
+
+var tela = document.querySelector("canvas");
+
+//a tela vai ser 2d
+var pincel = tela.getContext("2d");
+
+// propriedade, recebe valor, no caso a cor
+pincel.fillStyle = "gray";
+
+//pintar um retanfulo(coordenadaX, coordenadaY, largura, altura)
+pincel.fillRect(0, 0, 600, 400);
+
+pincel.fillStyle = "green";
+pincel.fillRect(0, 0, 200, 400);
+
+pincel.fillStyle = "red"
+pincel.fillRect(400, 0, 200, 400);
+
+pincel.fillStyle = "pink"
+// comecar um caminho 
+pincel.beginPath();
+pincel.moveTo(300, 200);
+pincel.lineTo(200, 400);
+pincel.lineTo(400, 400);
+pincel.fill();
+
+pincel.fillStyle ="blue";
+pincel.beginPath();
+// para fazer um circulo
+pincel.arc(300, 200, 50, 0, 2 * 3.14);
+pincel.fill();
+
+</script>

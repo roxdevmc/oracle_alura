@@ -1,0 +1,93 @@
+<!-- 1º teste, anotações
+<canvas width="600" height="400"></canvas>
+
+<script>
+
+    var tela = document.querySelector("canvas");
+    var pincel = tela.getContext("2d");
+
+    pincel.fillStyle = "pink";
+    pincel.fillRect(0, 0, 600, 400);
+
+    function exibeAlerta(evento){
+        var x = evento.pageX - tela.offsetLeft;
+        var y = evento.pageY - tela.offsetTop;
+    // leva em consideração a tela inteira entao para descosiderar
+    // vc escreve - tela.offsetLeft que ele vai subtrair e te dar a coordenada
+    // é aquele espacinho em branco que aparece no navegador
+        alert(x + "," + y);
+        console.log(evento);
+    }
+
+/*propriedade onclick, tudo que vc atribuir vai ser chamada, 
+nao coloca () para nao acionar a funcao,
+ela so ativa quando clicar na tela
+o navegador que passa o parametro do evento */
+   tela.onclick = exibeAlerta;
+
+
+</script> -->
+<!-- 2º teste, marcarção bolinhas com click na tela
+<canvas width="600" height="400"></canvas>
+
+<script>
+
+    var tela = document.querySelector("canvas");
+    var pincel = tela.getContext("2d");
+
+    pincel.fillStyle = "pink";
+    pincel.fillRect(0, 0, 600, 400);
+
+    function desenhoCirculo(evento){
+        var x = evento.pageX - tela.offsetLeft;
+        var y = evento.pageY - tela.offsetTop;
+
+        pincel.fillStyle = "blue";
+        pincel.beginPath();
+        pincel.arc(x, y, 10 ,0, 2 * 3.14);
+        pincel.fill();
+        console.log(evento);
+    }
+
+   tela.onclick = desenhoCirculo;
+
+</script>
+-->
+<!-- 3/] teste, desenhando com o mouse -->
+<canvas width="600" height="400"></canvas>
+
+<script>
+
+    var tela = document.querySelector("canvas");
+    var pincel = tela.getContext("2d");
+
+    pincel.fillStyle = "pink";
+    pincel.fillRect(0, 0, 600, 400);
+
+    function desenhoCirculo(evento){
+        var x = evento.pageX - tela.offsetLeft;
+        var y = evento.pageY - tela.offsetTop;
+
+        pincel.fillStyle = "blue";
+        pincel.beginPath();
+        pincel.arc(x, y, 10 ,0, 2 * 3.14);
+        pincel.fill();
+        console.log(evento);
+    }
+
+   tela.onmousemove = desenhoCirculo;
+
+   //atribuindo na função anonima
+    tela.onmousedown = function(){
+        desenha = true;
+    }
+
+    tela.onmouseup = function(){
+        desenha = false;
+    }
+    
+</script>
+
+onmousemove - captura o movimento do mouse, mas nao sabe se esta sendo clicado ou nao
+onmousedown - ativa toda vez que o botao esquerdo for pressionado 
+onmouseup - ativa quando o botao esquerdo for solto
